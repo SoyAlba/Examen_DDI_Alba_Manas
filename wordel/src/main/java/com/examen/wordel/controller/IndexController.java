@@ -1,11 +1,10 @@
 package com.examen.wordel.controller;
 
-import java.lang.System.Logger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.logging.LogManager;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.examen.wordel.model.*;
 @Controller("indexController")
 
-public class indexController{
-    
+public class IndexController{
+    private static Logger log = LogManager.getLogger(IndexController.class);
     @Autowired
     private Word word;
     private List<Word> wordsAttemsList = new ArrayList<Word>();
-    private int attempts;
 
     @GetMapping("/")
     public ModelAndView index() {
@@ -38,9 +37,15 @@ public class indexController{
         if (wordIndex.isCorrect(wordIndex.getWord(), wordIndex.getAttempts(), wordIndex.getLeng())) {
             modelAndView.addObject("word", wordIndex);
             modelAndView.addObject("message", "Correcto");
+            wordsAttemsList.add(wordIndex);
+            log=LogManager.getLogger(IndexController.class);
         } else {
             modelAndView.addObject("word", wordIndex);
             modelAndView.addObject("message", "Incorrecto");
+            wordIndex.setAttempts(wordIndex.getAttempts() + 1);
+            if (wordIndex.getAttempts() == word.getMaxAttempts()) {
+                modelAndView.addObject("message", "Has perdido");
+            }
         }
         return modelAndView;
     }
@@ -51,6 +56,7 @@ public class indexController{
         int index = (int) (Math.random() * 4);
         word = Word.words.get(index);
         modelAndView.addObject("word", word);
+        log=LogManager.getLogger(IndexController.class);
         return modelAndView;
     }
 

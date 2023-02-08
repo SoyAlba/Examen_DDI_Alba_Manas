@@ -14,6 +14,7 @@ public class Word {
     private int attempts;
     private int leng;
     private int le;
+    private int maxAttempts;
 
     @Autowired
     public Word() {
@@ -76,5 +77,13 @@ public class Word {
     public int addword(String word) {
         words.add(new Word(word));
         return words.size();
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
+
+    public void setMaxAttempts(int maxAttempts) {
+        this.maxAttempts = maxAttempts;
     }
 }

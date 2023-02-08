@@ -10,8 +10,8 @@ public class WordLevel1 extends AbstractWord {
     public WordLevel1(Word word) {
         super(String.valueOf(word));
         int leng=3;
-        int Attempts=20;
-        word.setAttempts(Attempts);
+        int maxAttempts=20;
+        word.setMaxAttempts(maxAttempts);
         word.setLeng(leng);
     }
 

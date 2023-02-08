@@ -18,7 +18,7 @@
 	<form:label path="words" value="${word}" />
   </c:for>
   <form:button>Submit</form:button>
-<form:button>Submit</form:button>
+</form:form>
 
 
 </body>
