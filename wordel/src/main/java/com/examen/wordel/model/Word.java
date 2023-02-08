@@ -2,6 +2,10 @@ package com.examen.wordel.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+@Component
 public class Word {
 
     public static List<Word> words = new ArrayList<Word>();
@@ -11,6 +15,7 @@ public class Word {
     private int leng;
     private int le;
 
+    @Autowired
     public Word() {
         super();
     }

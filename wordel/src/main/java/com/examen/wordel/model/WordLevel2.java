@@ -1,8 +1,12 @@
 package com.examen.wordel.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
+@Component
+@Profile("level2")
 public class WordLevel2 extends AbstractWord {
 
     public WordLevel2(Word word) {
@@ -15,7 +19,10 @@ public class WordLevel2 extends AbstractWord {
     }
 
     static{
-        Word.words.add(new Word("perro"));
+        Word.words.add(new Word("perros"));
+        Word.words.add(new Word("gatos"));
+        Word.words.add(new Word("casas"));
+        Word.words.add(new Word("camas"));
     }
 
 }
