@@ -15,8 +15,8 @@
 <body>
 <h1>Wordel</h1>
 
-<form:form action="comprobarPalabra" method="post">
-	<form:input path="name" />
+<form:form action="comprobarPalabra" method="post" modelAttribute="word">
+	<form:input path="word" />
 	<form:button>Submit</form:button>
 </form:form>
 
