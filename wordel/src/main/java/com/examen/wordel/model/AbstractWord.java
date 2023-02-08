@@ -1,15 +1,28 @@
-package main.java.com.examen.wordel.model;
-public class AbstractWord implements Worl{
+package com.examen.wordel.model;
 
-    private String word;
+import java.util.ArrayList;
+import java.util.List;
+ 
+public abstract class AbstractWord implements IWord {
+
     private List<Letter> letters = new ArrayList<Letter>();
+    private String word;
+    private int attempts;
+    private int leng;
+    private int le;
 
-    public String getWord() {
-        return word;
+
+    public AbstractWord() {
+        super();
     }
 
-    public void setWord(String word) {
+    public AbstractWord(String word) {
+        super();
         this.word = word;
+        this.leng = word.length();
+        for (int i = 0; i < word.length(); i++) {
+            letters.add(new Letter(word.substring(i, i + 1)));
+        }
     }
 
     public List<Letter> getLetters() {
@@ -20,28 +33,59 @@ public class AbstractWord implements Worl{
         this.letters = letters;
     }
 
-    public void addLetter(Letter letter) {
-        letters.add(letter);
+    public String getWord() {
+        return word;
     }
 
-    public boolean isFull() {
-        return letters.size() == word.length();
+    public void setWord(String word) {
+        this.word = word;
     }
 
-    public int spaceAvalaible() {
-        return word.length() - letters.size();
+    public int getAttempts() {
+        return attempts;
     }
 
-    public void addItem(Letter letter) {
-        letters.add(letter);
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
     }
 
+    public int getLeng() {
+        return leng;
+    }
+
+    public void setLeng(int leng) {
+        this.leng = leng;
+    }
+
+    public int getLe() {
+        return le;
+    }
+
+    public void setLe(int le) {
+        this.le = le;
+    }
     public boolean isCorrect() {
-        String word = "";
         for (Letter letter : letters) {
-            word += letter.getLetter();
+            if (!letter.isCorrect()) {
+                return false;
+            }
         }
-        return this.word.equals(word);
+        return true;
     }
+
+    public boolean isCorrect(String word, int attempts, int leng) {
+        if (word.equals(this.word) && attempts == leng) {
+            return true;
+        }
+        return false;
+    }
+
+    public int addword(String word) {
+
+        Word.words.add(new Word(word));
+        return Word.words.size();
+
+    }
+
 
 }
