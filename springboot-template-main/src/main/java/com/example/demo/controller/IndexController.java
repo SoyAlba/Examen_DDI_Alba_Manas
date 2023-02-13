@@ -15,7 +15,7 @@ import com.example.demo.service.ServiceStudent;
 @Controller
 public class IndexController {
 	
-	Logger l = org.apache.logging.log4j.LogManager.getLogger(IndexController.class);
+	private Logger l = org.apache.logging.log4j.LogManager.getLogger(IndexController.class);
 
 	public ServiceUser serviceuser;
 

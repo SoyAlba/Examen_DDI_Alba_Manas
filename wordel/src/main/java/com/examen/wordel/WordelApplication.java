@@ -2,18 +2,13 @@ package com.examen.wordel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 
+
 @SpringBootApplication
-@ComponentScan(basePackages = { "es.examen.wordel.*" })
+@ComponentScan(basePackages = { "com.examen.wordel.*" })
 public class WordelApplication {
-
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(WordelApplication.class);
-	}
-
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		SpringApplication.run(WordelApplication.class, args);
 	}
-}
+ }

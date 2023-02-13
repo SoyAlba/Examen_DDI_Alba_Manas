@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.examen.wordel.model.*;
-@Controller("indexController")
-
+@Controller
 public class IndexController{
-    private static Logger log = LogManager.getLogger(IndexController.class);
+    Logger log = LogManager.getLogger(IndexController.class);
     @Autowired
-    private Word word;
-    private List<Word> wordsAttemsList = new ArrayList<Word>();
+    public Word word;
 
+    public List<Word> wordsAttemsList = new ArrayList<Word>();
+
+    @Autowired
+    public IndexController(Word word) {
+        this.word = word;
+    }
     @GetMapping("/")
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index");
+    public ModelAndView goToIndexPage() {
+		ModelAndView modelAndView = new ModelAndView("index");
         int index = (int) (Math.random() * 4);
         word = Word.words.get(index);
         modelAndView.addObject("word", word);
