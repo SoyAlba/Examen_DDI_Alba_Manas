@@ -10,12 +10,13 @@
 </head>
 <body>
 <h1>hola mundo</h1>
-	<form:form action="addStudentForm" method="post" modelAttribute="estudiante">
-		<span>Nombre:</span>
-		<form:input path="name" type="text" name="name"/>
-		<span>Apellidos:</span>
-		<form:input path="surname" type="text" name="surname"/>
-		<input type="submit"/>
-	</form:form>
+
+		<form:form action="comprobarPalabra" method="post" modelAttribute="word">
+            <span>Palabra:</span>
+            <form:input path="word" type="hidden" name="word"/>
+            <form:input path="wordIndex" type="text" name="wordIndex"/>
+            <br/>
+			<input type="submit"/>
+		</form:form>
 </body>
 </html>
